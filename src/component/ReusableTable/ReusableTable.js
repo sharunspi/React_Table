@@ -4,7 +4,8 @@ export class ReusableTable extends Component {
     state = {
         selectedRow:null,
         selectedColumn:null,
-        tableBody: this.props.tableRow
+        tableBody: this.props.tableRow,
+        tableRowDummy:this.props.tableRow
     }
     editThis = (row, cell) => {
         console.log(row, cell)
@@ -15,7 +16,7 @@ export class ReusableTable extends Component {
     } 
 
     changeRow = (e, rowI, cellI) => {
-        let list =[]
+        let list =[[]]
         this.state.tableBody.map((row,rowId) =>
             {
                 if(rowId == rowI) {
@@ -26,16 +27,21 @@ export class ReusableTable extends Component {
                             list[rowId][cellId] = cell
                         }
                     })
+                    
                 }else {
                     list.push(row)
                 }
             }
         )
-        console.log(list)
-        // this.setState({
-        //     tableBody: 
-        // })
+            this.setState({
+            tableBody:list 
+        })
     }
+
+    saveData = () => {
+        this.setState({selectedRow:null,selectedColumn:null})
+    }
+
 
     render() {
         return (
@@ -53,7 +59,7 @@ export class ReusableTable extends Component {
                             rows.map((cell,cellId) => {
                                 return (
                                     this.state.selectedRow === rowId && this.state.selectedColumn === cellId ? <>
-                                    <input datatype='text'  value={cell} onChange={e => this.changeRow(e.target,rowId,cellId)} /> <button>Save</button> 
+                                    <input datatype='text'  value={cell} onChange={e => this.changeRow(e.target,rowId,cellId)} /> <button onClick={this.saveData}>Save</button> 
                                     </>: <td onDoubleClick={() => this.editThis(rowId,cellId)}>{cell} </td>
                                 )
                         })
