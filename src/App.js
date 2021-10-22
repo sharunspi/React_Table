@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+
+import ReusableTable from "./component/ReusableTable";
+
+const tableHead = [
+  "Column 1",
+  "Column 2",
+  "Column 3",
+  "Column 4",
+  "Column 5"
+]
+
+const tableBody = [
+  [
+    "Row 1",
+    "Row 2",
+    "Row 3",
+    "Row 4",
+    "Row 5"
+  ],
+  [
+    "Row 1",
+    "Row 2",
+    "Row 3",
+    "Row 4",
+    "Row 5"
+  ],
+  [
+    "Row 1",
+    "Row 2",
+    "Row 3",
+    "Row 4",
+    "Row 5"
+  ]
+]
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <ReusableTable
+          tableHead = {tableHead} 
+          tableRow = {tableBody}
+        />
     </div>
   );
 }
