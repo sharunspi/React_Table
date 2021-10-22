@@ -37,11 +37,13 @@ import tablelement by
 
 # Propertice
 
-`<ReusableTable
+```
+<ReusableTable
           tableHead = {tableHead} // array containing column heads
           tableRow = {tableBody} // array of array conatining data
         />
-`
+```
+
 # features
 1. Double click any cell to edit cell
 2. Resize column heading
